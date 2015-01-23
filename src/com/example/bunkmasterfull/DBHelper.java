@@ -85,7 +85,7 @@ public class DBHelper extends SQLiteOpenHelper
 		
 		String tempttSql = "CREATE TABLE "+TABLE_TEMP_TIMETABLE+"(date TEXT, hour INTEGER, subject TEXT);";
 		
-		String impdatesSql = "CREATE TABLE "+TABLE_IMPORTANT_DATES+"(name TEXT, date TEXT, desc TEXT, alarm INTEGER);";
+		String impdatesSql = "CREATE TABLE "+TABLE_IMPORTANT_DATES+"(name TEXT, date TEXT, desc TEXT, ala;";
 		
 		String papersSql = "CREATE TABLE "+TABLE_PAPERS+"(name TEXT, subject TEXT, weight INTEGER, " +
 				"date TEXT, status INTEGER, maxmarks INTEGER, score INTEGER INTEGER, reminder INTEGER);";
