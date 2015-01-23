@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.bunkmasterfull"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="17" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.example.bunkmasterfull.Main"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.bunkmasterfull.subjects.AcceptSubjects"
+            android:label="@string/title_activity_accept_subjects"
+            android:parentActivityName="com.example.bunkmasterfull.Main" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.bunkmaster.Main" />
+        </activity>
+        <activity
+            android:name="com.example.bunkmasterfull.timetable.AcceptTimetable"
+            android:label="@string/title_activity_accept_timetable" >
+        </activity>
+        <activity
+            android:name="com.example.bunkmasterfull.subjects.ShowSubjects"
+            android:label="@string/title_activity_show_subjects"
+            android:parentActivityName="com.example.bunkmasterfull.Main" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.bunkmasterfull.Main" />
+        </activity>
+        <activity
+            android:name="com.example.bunkmasterfull.subjects.AddSubject"
+            android:label="@string/title_activity_add_subject"
+            android:parentActivityName="com.example.bunkmasterfull.subjects.ShowSubjects" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.bunkmasterfull.subjects.ShowSubjects" />
+        </activity>
+        <activity
+            android:name="com.example.bunkmasterfull.semdates.SemDates"
+            android:label="@string/title_activity_sem_dates"
+            android:parentActivityName="com.example.bunkmasterfull.Main" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.bunkmasterfull.Main" />
+        </activity>
+        <activity
+            android:name="com.example.bunkmasterfull.weekview.WeekView"
+            android:label="@string/title_activity_week_view"
+            android:parentActivityName="com.example.bunkmasterfull.Main" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.bunkmasterfull.Main" />
+        </activity>
+        <activity
+            android:name="com.example.bunkmasterfull.subjects.SubjectStatus"
+            android:label="@string/title_activity_subject_status"
+            android:parentActivityName="com.example.bunkmasterfull.subjects.ShowSubjects" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.bunkmasterfull.subjects.ShowSubjects" />
+        </activity>
+        <activity
+            android:name="com.example.bunkmasterfull.impdates.ShowImpDates"
+            android:label="@string/title_activity_important_dates"
+            android:parentActivityName="com.example.bunkmasterfull.Main" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.bunkmasterfull.Main" />
+        </activity>
+        <activity
+            android:name="com.example.bunkmasterfull.impdates.ImpDateStatus"
+            android:label="@string/title_activity_show_important_date"
+            android:parentActivityName="com.example.bunkmasterfull.impdates.ShowImpDates" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.bunkmasterfull.impdates.ShowImpDates" />
+        </activity>
+        <activity
+            android:name="com.example.bunkmasterfull.impdates.AddImpDate"
+            android:label="@string/title_activity_add_imp_date"
+            android:parentActivityName="com.example.bunkmasterfull.impdates.ShowImpDates" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.bunkmasterfull.impdates.ShowImpDates" />
+        </activity>
+
+        <service
+            android:name="com.example.bunkmasterfull.Monitor"
+            android:label="Attendance Monitor" >
+        </service>
+
+        <activity
+            android:name="com.example.bunkmasterfull.options.SettingsActivity"
+            android:label="@string/title_activity_settings" >
+        </activity>
+        <activity
+            android:name="com.example.bunkmasterfull.options.Help"
+            android:label="@string/title_activity_about" >
+        </activity>
+        <activity
+            android:name="com.example.bunkmasterfull.Paper"
+            android:label="@string/title_activity_paper"
+            android:parentActivityName="com.example.bunkmasterfull.subjects.SubjectStatus">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.bunkmasterfull.subjects.SubjectStatus" />
+        </activity>
+    </application>
+
+</manifest>

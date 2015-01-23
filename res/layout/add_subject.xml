@@ -1,0 +1,69 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".AddSubject"
+    android:background="@drawable/back2" >
+    
+    <TextView 
+        android:id="@+id/enter"
+        android:text="Enter your subjects' names: "
+        android:textSize="15sp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="8dp"/>
+    
+    <EditText
+        android:id="@+id/subj1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/enter"
+        android:visibility="visible" />
+    
+    <EditText
+        android:id="@+id/subj2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/subj1"
+        android:visibility="invisible" />
+    
+    <EditText
+        android:id="@+id/subj3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/subj2"
+        android:visibility="invisible" />
+    
+    <EditText
+        android:id="@+id/subj4"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/subj3"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/addsubj"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/subj4"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="23dp"
+        android:onClick="makeNextVisible"
+        android:text="Add more" />
+
+    <Button
+        android:id="@+id/done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/addsubj"
+        android:layout_alignBottom="@+id/addsubj"
+        android:layout_marginLeft="38dp"
+        android:layout_toRightOf="@+id/addsubj"
+        android:onClick="insertIntoTable"
+        android:text="Done" />
+
+</RelativeLayout>

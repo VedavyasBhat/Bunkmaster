@@ -1,0 +1,297 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:id="@+id/blergh"
+    tools:context=".WeekView"
+    android:animateLayoutChanges="true"
+    android:background="@drawable/back2" >
+    
+    <TextView
+        android:id="@+id/weekdates"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp" />
+    
+    <Button
+        android:id="@+id/previous"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:text="Previous"
+        android:onClick="loadPrevious" />
+
+    <Button
+        android:id="@+id/next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="Next"
+        android:onClick="loadNext" />
+    
+    <HorizontalScrollView
+        android:id="@+id/weekviewscroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/previous"
+        android:paddingBottom="30dp" >
+
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" >
+            
+            <TableRow
+                android:paddingBottom = "8dp">
+            <TextView
+		        android:id="@+id/wvmon"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="Mon"
+		        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <Spinner
+                android:id="@+id/mon1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            
+            <Spinner
+                android:id="@+id/mon2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Spinner
+                android:id="@+id/mon3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Spinner
+                android:id="@+id/mon4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Spinner
+                android:id="@+id/mon5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Spinner
+                android:id="@+id/mon6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            
+            </TableRow>
+            
+            <TableRow
+                android:paddingBottom = "8dp">
+            
+	            <TextView
+	                android:id="@+id/wvtue"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"	              
+	                android:text="Tue"
+	                android:textAppearance="?android:attr/textAppearanceMedium" />
+	            <Spinner
+	                android:id="@+id/tue1"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content" />
+            
+	            <Spinner
+	                android:id="@+id/tue2"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content" />
+	
+	            <Spinner
+	                android:id="@+id/tue3"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content" />
+	
+	            <Spinner
+	                android:id="@+id/tue4"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content" />
+	
+	            <Spinner
+	                android:id="@+id/tue5"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content" />
+	
+	            <Spinner
+	                android:id="@+id/tue6"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content" />
+	            
+            </TableRow>
+            
+            <TableRow
+                android:paddingBottom = "8dp">
+	            
+	            <TextView
+	                android:id="@+id/wvwed"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"	              
+	                android:text="Wed"
+	                android:textAppearance="?android:attr/textAppearanceMedium" />
+	            <Spinner
+	                android:id="@+id/wed1"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content" />
+            
+	            <Spinner
+	                android:id="@+id/wed2"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content" />
+	
+	            <Spinner
+	                android:id="@+id/wed3"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content" />
+	
+	            <Spinner
+	                android:id="@+id/wed4"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content" />
+	
+	            <Spinner
+	                android:id="@+id/wed5"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content" />
+	
+	            <Spinner
+	                android:id="@+id/wed6"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content" />
+	            
+            </TableRow>
+            
+            <TableRow
+                android:paddingBottom = "8dp">
+	            <TextView
+	                android:id="@+id/wvthu"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"	              
+	                android:text="Thu"
+	                android:textAppearance="?android:attr/textAppearanceMedium" />
+	            <Spinner
+	                android:id="@+id/thu1"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content" />
+            
+	            <Spinner
+	                android:id="@+id/thu2"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content" />
+	
+	            <Spinner
+	                android:id="@+id/thu3"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content" />
+	
+	            <Spinner
+	                android:id="@+id/thu4"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content" />
+	
+	            <Spinner
+	                android:id="@+id/thu5"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content" />
+	
+	            <Spinner
+	                android:id="@+id/thu6"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content" />
+	            
+            </TableRow>
+            
+            <TableRow
+                android:paddingBottom = "8dp">
+	            
+	            <TextView
+	                android:id="@+id/wvfri"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"	              
+	                android:text="Fri"
+	                android:textAppearance="?android:attr/textAppearanceMedium" />
+	            <Spinner
+	                android:id="@+id/fri1"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content" />
+            
+	            <Spinner
+	                android:id="@+id/fri2"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content" />
+	
+	            <Spinner
+	                android:id="@+id/fri3"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content" />
+	
+	            <Spinner
+	                android:id="@+id/fri4"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content" />
+	
+	            <Spinner
+	                android:id="@+id/fri5"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content" />
+	
+	            <Spinner
+	                android:id="@+id/fri6"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content" />
+	            
+            </TableRow>
+            
+            <TableRow
+                android:paddingBottom = "8dp">
+	            
+	                  <TextView
+	                android:id="@+id/wvsat"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"	              
+	                android:text="Sat"
+	                android:textAppearance="?android:attr/textAppearanceMedium" />
+	            <Spinner
+	                android:id="@+id/sat1"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content" />
+            
+	            <Spinner
+	                android:id="@+id/sat2"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content" />
+	
+	            <Spinner
+	                android:id="@+id/sat3"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content" />
+	
+	            <Spinner
+	                android:id="@+id/sat4"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content" />
+	
+	            <Spinner
+	                android:id="@+id/sat5"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content" />
+	
+	            <Spinner
+	                android:id="@+id/sat6"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content" />
+	            
+            </TableRow>
+            
+        </TableLayout>
+    </HorizontalScrollView>
+</RelativeLayout>

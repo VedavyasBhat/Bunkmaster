@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListPreference 
+            android:key="criteria"
+            android:title="Percentage criteria"
+            android:summary="What is your attendance percent criteria?"
+            android:defaultValue="80" 
+            android:entries="@array/percentChoiceDisplay"
+            android:entryValues="@array/percentChoice" />
+    
+    <MultiSelectListPreference
+        android:key="lowattnotifs"
+        android:title="Low attendance notifications"
+        android:summary="Select the days on which you will be notified of your low attendance (in case attendance becomes low)"
+        android:entries="@array/lowAttDisplay"
+        android:entryValues="@array/lowAtt"
+        android:defaultValue="@array/empty_array"/>
+    
+    <MultiSelectListPreference
+        android:key="impdatenotifs"
+        android:title="Important event notifications"
+        android:summary="Select when you should be notified of an upcoming important event"
+        android:entries="@array/impDateDisplay"
+        android:entryValues="@array/impDateDisplay"
+        android:defaultValue="@array/empty_array"/>
+    
+    <com.example.bunkmasterfull.options.YesNo
+        android:title="Reset application"
+        android:summary="Delete all data"
+        />
+    
+</PreferenceScreen>

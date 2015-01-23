@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@drawable/back2" >
+    
+    <TextView 
+        android:id="@+id/enter"
+        android:text="Enter your subjects: "
+        android:textSize="18sp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"/>
+    
+    <EditText
+        android:id="@+id/subj1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/enter"
+        android:visibility="visible" />
+    
+    <EditText
+        android:id="@+id/subj2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/subj1"
+        android:visibility="invisible" />
+    
+    <EditText
+        android:id="@+id/subj3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/subj2"
+        android:visibility="invisible" />
+    
+    <EditText
+        android:id="@+id/subj4"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/subj3"
+        android:visibility="invisible" />
+    
+    <EditText
+        android:id="@+id/subj5"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/subj4"
+        android:visibility="invisible" />
+    
+    <EditText
+        android:id="@+id/subj6"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/subj5"
+        android:visibility="invisible" />
+    
+    <EditText
+        android:id="@+id/subj7"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/subj6"
+        android:visibility="invisible" />
+    
+    <EditText
+        android:id="@+id/subj8"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/subj7"
+        android:visibility="invisible" />
+    
+    <EditText
+        android:id="@+id/subj9"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/subj8"
+        android:visibility="invisible" />
+    
+    <EditText
+        android:id="@+id/subj10"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/subj9"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/addsubj"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="45dp"
+        android:text="Add subject"
+        android:onClick="makeNextVisible" />
+
+    <Button
+        android:id="@+id/done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="38dp"
+        android:layout_toRightOf="@+id/addsubj"
+        android:onClick="insertIntoSubjects"
+        android:text="Done" />
+
+    </RelativeLayout>

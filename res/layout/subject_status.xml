@@ -1,0 +1,153 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/subjectstatusscroll"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".SubjectStatus" >
+    
+    <RelativeLayout
+        android:id="@+id/subjectstatusrel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+	    <RelativeLayout
+	        android:id="@+id/subjectstatusmain"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:background="#E0E0E0">
+	        
+		    <TextView
+			    android:id="@+id/subname"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_alignParentTop="true"
+			    android:layout_centerHorizontal="true"
+			    android:layout_marginTop="15dp"
+			    android:layout_marginBottom="15dp"
+			    android:textSize="30sp" />
+			    
+		    <com.example.bunkmasterfull.subjects.PieChart
+		        android:id="@+id/subjectpi"
+		        android:layout_below="@+id/subname"
+		        android:layout_width="200dp"
+		        android:layout_height="200dp"
+		        android:layout_marginTop="5dp"
+		        android:layout_marginBottom="5dp"
+		        android:layout_centerHorizontal="true"  />
+		    
+		    <TextView
+		        android:id="@+id/subcolour"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+				android:layout_alignParentLeft="true"
+		        android:layout_below="@+id/subjectpi"
+		        android:layout_marginTop="25dp"
+		        android:layout_marginBottom="25dp"
+		        android:text="Colour: "
+		        android:textAppearance="?android:attr/textAppearanceLarge" />
+		    
+		    <Spinner
+		        android:id="@+id/subcolourspin"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_alignBottom="@+id/subcolour"
+		        android:layout_toRightOf="@+id/subcolour"
+		        android:textAppearance="?android:attr/textAppearanceLarge" />
+		    
+		</RelativeLayout>
+		
+		<RelativeLayout
+		    android:id="@+id/subjectstatusfields"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_below="@+id/subjectstatusmain" 
+		    android:background="#D1D1D1">
+		    
+		    <TextView
+		        android:id="@+id/subexpected"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_alignParentLeft="true"
+		        android:layout_marginTop="25dp"
+		        android:text="Expected: "
+			    android:textAppearance="?android:attr/textAppearanceLarge" />
+			    
+		    <TextView
+		        android:id="@+id/subheld"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_alignParentLeft="true"
+		        android:layout_below="@+id/subexpected"
+		        android:layout_marginTop="25dp"
+		        android:text="Held: "
+		        android:textAppearance="?android:attr/textAppearanceLarge" />
+			
+		    <TextView
+		        android:id="@+id/subattended"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_alignParentLeft="true"
+		        android:layout_below="@+id/subheld"
+		        android:layout_marginTop="25dp"
+		        android:layout_marginBottom="25dp"
+		        android:text="Attended: "
+		        android:textAppearance="?android:attr/textAppearanceLarge" />
+		    
+		</RelativeLayout>
+		
+		<RelativeLayout 
+		    android:id="@+id/subjectstatusanalysis"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_below="@+id/subjectstatusfields"
+		    android:background="#C7C7C7">
+			    
+			<TextView
+		        android:id="@+id/subpercent"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_alignParentLeft="true"
+		        android:layout_marginTop="25dp"
+		        android:text="Percentage:  "
+		        android:textAppearance="?android:attr/textAppearanceLarge" />
+				
+			<TextView
+		        android:id="@+id/subsafebunks"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_alignParentLeft="true"
+		        android:layout_below="@+id/subpercent"
+		        android:layout_marginTop="25dp"
+		        android:text="Safe bunks:  "
+		        android:textAppearance="?android:attr/textAppearanceLarge" />
+			
+			<CheckBox
+		        android:id="@+id/subnotifcheck"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_below="@+id/subsafebunks"
+		        android:layout_marginTop="40dp"
+		        android:layout_centerVertical="true"
+		        android:text="Low attendance notification"
+		        android:layout_marginBottom="25dp"
+		        android:textSize="18sp"
+		        android:checked="false"/>
+			
+		</RelativeLayout>
+	    
+		<Button
+		        android:id="@+id/deletesubject"
+		        android:layout_height="wrap_content"
+		        android:layout_width="wrap_content"
+		        android:layout_alignParentBottom="true"
+		        android:layout_centerHorizontal="true"
+		        android:layout_below="@+id/subjectstatusanalysis"
+		        android:layout_marginTop="10dp"
+		        android:text="Delete"
+		        android:onClick="deleteSubject"	/>
+		</RelativeLayout>
+</ScrollView>

@@ -1,0 +1,101 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".AddImpDate"
+     >
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        
+    <TextView
+        android:id="@+id/newimpdatetv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="New important date"
+        android:textSize="25sp"
+        android:textColor="#0008FF" />
+    
+    <TextView
+	       android:id="@+id/nametv"
+	       android:layout_width="wrap_content"
+	       android:layout_height="wrap_content"
+	       android:layout_below="@+id/newimpdatetv"
+	       android:layout_alignParentLeft="true"
+	       android:layout_marginTop="40dp"
+	       android:text="Name of the event "
+	       android:textSize="16sp"
+	       android:textColor="#6380F2" />
+    
+    <EditText
+        android:id="@+id/addname"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/nametv" />
+		    
+	 <TextView
+	       android:id="@+id/date"
+	       android:layout_width="wrap_content"
+	       android:layout_height="wrap_content"
+	 	   android:layout_alignParentLeft="true"
+	       android:layout_below="@+id/addname"
+	       android:layout_marginTop="40dp"
+	       android:text="Date: "
+	       android:textSize="16sp"
+	       android:textColor="#6380F2"	/>
+     
+     <TextView
+	       android:id="@+id/desctv"
+	       android:layout_width="wrap_content"
+	       android:layout_height="wrap_content"
+	       android:layout_alignLeft="@+id/nametv"
+	       android:layout_below="@+id/date"
+	       android:layout_marginTop="40dp"
+	       android:text="Description: "
+	       android:textSize="16sp"
+	       android:textColor="#6380F2" />
+    
+    <EditText
+        android:id="@+id/adddesc"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/desctv"/>"
+        
+    <CheckBox
+        android:id="@+id/alarmcheck"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/adddesc"
+        android:layout_marginTop="10dp"
+        />
+    
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="Remind me"
+        android:layout_toRightOf="@+id/alarmcheck"
+        android:layout_alignBaseline="@+id/alarmcheck"
+        android:layout_marginRight="15dp"
+        />
+        
+    
+    <Button
+        android:id="@+id/addimpdatedone"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/alarmcheck"
+        android:layout_marginTop="40dp"
+        android:onClick="done"
+        android:text="Done"/>
+
+</RelativeLayout>
+</ScrollView>

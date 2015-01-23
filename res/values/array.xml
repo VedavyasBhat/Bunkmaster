@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string-array name="percentChoiceDisplay">
+	    <item>60%</item>
+	    <item>65%</item>
+	    <item>70%</item>
+	    <item>75%</item>
+	    <item>80%</item>
+	    <item>85%</item>
+	    <item>90%</item>
+	</string-array>
+	
+	<string-array name="percentChoice" >
+	    <item>60</item>
+	    <item>65</item>
+	    <item>70</item>
+	    <item>75</item>
+	    <item>80</item>
+	    <item>85</item>
+	    <item>90</item>
+	</string-array>
+	
+	<string-array name="lowAttDisplay" >
+	    <item>Never</item>
+	    <item>Monday</item>
+	    <item>Tuesday</item>
+	    <item>Wednsesday</item>
+	    <item>Thursday</item>
+	    <item>Friday</item>
+	    <item>Saturday</item>
+	    <item>Sunday</item>
+	</string-array>
+	
+	<string-array name="lowAtt" >
+	    <item>-1</item>
+	    <item>2</item>
+	    <item>3</item>
+	    <item>4</item>
+	    <item>5</item>
+	    <item>6</item>
+	    <item>7</item>
+	    <item>0</item>
+	</string-array>
+	
+	<string-array name="impDateDisplay" >
+	    <item>Never</item>
+	    <item>On that day</item>
+	    <item>A day before</item>
+	    <item>Two days before</item>
+	</string-array>
+	
+	<string-array name="impDate" >
+	    <item>0</item>
+	    <item>1</item>
+	    <item>2</item>
+	    <item>3</item>
+	</string-array>
+	
+	<string-array name="empty_array"/>
+</resources>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Bunkmaster</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_accept_timetable">Enter the timetable</string>
+    <string name="dayMon">Mon</string>
+    <string name="dayTue">Tue</string>
+    <string name="dayWed">Wed</string>
+    <string name="dayThu">Thu</string>
+    <string name="dayFri">Fri</string>
+    <string name="daySat">Sat</string>
+    <string name="plus">+</string>
+    <string name="OK">OK</string>
+    <string name="title_activity_accept_subjects">Enter the subjects</string>
+    <string name="title_activity_show_subjects">Subjects</string>
+    <string name="title_activity_add_subject">New subject</string>
+    <string name="title_activity_sem_dates">Semester Dates</string>
+    <string name="title_activity_week_view">Week View</string>
+    <string name="title_activity_subject_status">Subject Status</string>
+    <string name="colour">colour</string>
+    <string name="title_activity_important_dates">Important Dates</string>
+    <string name="title_activity_show_important_date">Important Date</string>
+    <string name="title_activity_add_imp_date">New Important Date</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_about">About</string>
+    <string name="defdays">Never</string>
+    <string name="title_activity_circle_test">Circle Test</string>
+    <string name="title_activity_test_calendar_view">Test Calendar View</string>
+    <string name="title_activity_paper">Paper</string>
+
+</resources>
