@@ -1,9 +1,14 @@
 package elements;
 
-public class Subject {
+/**
+ * @author Vedavyas Bhat
+ * 
+ * A POJO which represents a database element
+ */
+public class Subject implements Comparable<Subject> {
 	String name;
 	int expected, held, attended, safeBunks;
-	boolean hasLowAttendanceAlarm;
+	boolean lowAttendanceAlarm;
 
 	public int getExpected() {
 		return expected;
@@ -11,6 +16,7 @@ public class Subject {
 
 	public void setExpected(int expected) {
 		this.expected = expected;
+		
 	}
 
 	public int getHeld() {
@@ -37,12 +43,12 @@ public class Subject {
 		this.safeBunks = safeBunks;
 	}
 
-	public boolean isHasLowAttendanceAlarm() {
-		return hasLowAttendanceAlarm;
+	public boolean hasLowAttendanceAlarm() {
+		return lowAttendanceAlarm;
 	}
 
-	public void setHasLowAttendanceAlarm(boolean hasLowAttendanceAlarm) {
-		this.hasLowAttendanceAlarm = hasLowAttendanceAlarm;
+	public void setLowAttendanceAlarm(boolean lowAttendanceAlarm) {
+		this.lowAttendanceAlarm = lowAttendanceAlarm;
 	}
 
 	public String getName() {
@@ -51,5 +57,10 @@ public class Subject {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Override
+	public int compareTo(Subject another) {
+		return this.getName().compareTo(another.getName());
 	}
 }

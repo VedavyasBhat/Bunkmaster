@@ -2,12 +2,12 @@ package com.example.bunkmasterfull;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.GregorianCalendar;
-
-import com.example.bunkmasterfull.timetable.Timetable;
-import com.example.bunkmasterfull.weekview.BunkOrTempTT;
+import java.util.List;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -18,18 +18,60 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.bunkmasterfull.timetable.Timetable;
+import com.example.bunkmasterfull.weekview.BunkOrTempTT;
+
+import elements.Subject;
+
 @SuppressLint("SimpleDateFormat")
 
 public class DBHelper extends SQLiteOpenHelper
 {
 	private static final int DB_VERSION = 1;
 	private static final String DB_NAME = "bunks.db";
-	private static final String TABLE_SUBJECTS = "subjects";
+	
+	private static final String TABLE_SUBJECT = "subjects";
 	private static final String TABLE_TIMETABLE = "timetable";
 	private static final String TABLE_ABSENT = "absent";
 	private static final String TABLE_TEMP_TIMETABLE = "temptt";
 	private static final String TABLE_IMPORTANT_DATES = "impdates";
 	private static final String TABLE_PAPERS = "paper";
+	
+	private static final String TABLE_SUBJECT_COLUMN_NAME = "name";
+	private static final String TABLE_SUBJECT_COLUMN_EXPECTED = "expected";
+	private static final String TABLE_SUBJECT_COLUMN_HELD = "held";
+	private static final String TABLE_SUBJECT_COLUMN_ATTENDED = "attended";
+	private static final String TABLE_SUBJECT_COLUMN_SAFE_BUNKS = "safebunks";
+	
+	private static final String TABLE_TIMETABLE_COLUMN_DAY = "name";
+	private static final String TABLE_TIMETABLE_COLUMN_ONE = "one";
+	private static final String TABLE_TIMETABLE_COLUMN_TWO = "two";
+	private static final String TABLE_TIMETABLE_COLUMN_THREE = "three";
+	private static final String TABLE_TIMETABLE_COLUMN_FOUR = "four";
+	private static final String TABLE_TIMETABLE_COLUMN_FIVE = "five";
+	private static final String TABLE_TIMETABLE_COLUMN_SIX = "six";
+	
+	private static final String TABLE_ABSENT_COLUMN_DATE = "date";
+	private static final String TABLE_ABSENT_COLUMN_HOUR = "hour";
+	private static final String TABLE_ABSENT_COLUMN_SUBJECT = "subject";
+	
+	private static final String TABLE_TEMP_TIMETABLE_COLUMN_DATE = "date";
+	private static final String TABLE_TEMP_TIMETABLE_COLUMN_HOUR = "hour";
+	private static final String TABLE_TEMP_TIMETABLE_COLUMN_SUBJECT = "subject";
+	
+	private static final String TABLE_IMPORTANT_DATES_COLUMN_NAME = "name";
+	private static final String TABLE_IMPORTANT_DATES_COLUMN_DATE = "date";
+	private static final String TABLE_IMPORTANT_DATES_COLUMN_DESCRIPTION = "desc";
+	private static final String TABLE_IMPORTANT_DATES_COLUMN_ALARM = "alarm";
+	
+	private static final String TABLE_PAPERS_COLUMN_NAME = "name";
+	private static final String TABLE_PAPERS_COLUMN_SUBJECT = "subject";
+	private static final String TABLE_PAPERS_COLUMN_WEIGHT = "weight";
+	private static final String TABLE_PAPERS_COLUMN_DATE = "date";
+	private static final String TABLE_PAPERS_COLUMN_STATUS = "status";
+	private static final String TABLE_PAPERS_COLUMN_MAX_MARKS = "maxmarks";
+	private static final String TABLE_PAPERS_COLUMN_SCORE = "score";
+	private static final String TABLE_PAPERS_COLUMN_REMINDER = "reminder";
 
 	public DBHelper(Context context, String name, CursorFactory factory,
 			int version) 
@@ -41,31 +83,9 @@ public class DBHelper extends SQLiteOpenHelper
 	@Override
 	public void onCreate(SQLiteDatabase dbb) 
 	{
-		
 		createSchema(dbb);
 		
 		populateDB(dbb);
-		
-		/*String decatttrig = "CREATE TRIGGER decatttrig AFTER INSERT ON absent BEGIN "
-									+ "UPDATE subjects SET attended=attended-1 WHERE name=new.subject;" +
-										"END;";
-		
-		String incatttrig = "CREATE TRIGGER incatttrig AFTER DELETE ON absent BEGIN "
-									+ "UPDATE subjects SET attended=attended+1 WHERE name=old.subject;" +
-										"END;";
-		
-		String inctemptrig = "CREATE TRIGGER inctemptrig AFTER INSERT ON temptt BEGIN "
-									+ "UPDATE subjects SET held=held+1 WHERE name=new.subject;" +
-										"END;";
-		
-		String dectemptrig = "CREATE TRIGGER dectemptrig AFTER DELETE ON temptt BEGIN "
-									+ "UPDATE subjects SET held=held-1 WHERE name=old.subject;" +
-										"END;";  */
-		
-		/*dbb.execSQL(incatttrig);
-		dbb.execSQL(decatttrig);
-		dbb.execSQL(inctemptrig);
-		dbb.execSQL(dectemptrig); */
 	}
 
 	@Override
@@ -73,22 +93,46 @@ public class DBHelper extends SQLiteOpenHelper
 	
 	private void createSchema(SQLiteDatabase db) {
 		
-		String subjectsSql = "CREATE TABLE "+TABLE_SUBJECTS+"(name TEXT, colour INTEGER, "
-				+ "expected INTEGER, held INTEGER, attended INTEGER, safebunks INTEGER, alarm INTEGER);";
-
-		String timetableSql = "CREATE TABLE "+TABLE_TIMETABLE+"(day INTEGER PRIMARY KEY, "
-				+ "one TEXT, two TEXT, "
-				+ "three TEXT, four TEXT, "
-				+ "five TEXT, six TEXT);";
+		String subjectsSql = "CREATE TABLE "+TABLE_SUBJECT+"("+TABLE_SUBJECT_COLUMN_NAME+" TEXT, "
+											+TABLE_SUBJECT_COLUMN_EXPECTED+" INTEGER, "
+											+TABLE_SUBJECT_COLUMN_HELD+" INTEGER, "
+											+TABLE_SUBJECT_COLUMN_ATTENDED+" INTEGER, "
+											+TABLE_SUBJECT_COLUMN_SAFE_BUNKS+" INTEGER, "
+											+TABLE_SUBJECT_COLUMN_SAFE_BUNKS+" INTEGER);";
 		
-		String absentSql = "CREATE TABLE "+TABLE_ABSENT+"(date TEXT, hour INTEGER, subject TEXT);";
+		String timetableSql = "CREATE TABLE "+TABLE_TIMETABLE+"("+TABLE_TIMETABLE_COLUMN_DAY+" INTEGER,"
+									  +TABLE_TIMETABLE_COLUMN_ONE+" TEXT, "
+									  +TABLE_TIMETABLE_COLUMN_TWO+" TEXT, "
+									  +TABLE_TIMETABLE_COLUMN_THREE+" TEXT, "
+									  +TABLE_TIMETABLE_COLUMN_FOUR+" TEXT, "
+									  +TABLE_TIMETABLE_COLUMN_FIVE+" TEXT, "
+									  +TABLE_TIMETABLE_COLUMN_SIX+" TEXT);";
 		
-		String tempttSql = "CREATE TABLE "+TABLE_TEMP_TIMETABLE+"(date TEXT, hour INTEGER, subject TEXT);";
+		String absentSql = "CREATE TABLE "+TABLE_ABSENT+"( "
+				+TABLE_ABSENT_COLUMN_DATE+" TEXT, "
+				+TABLE_ABSENT_COLUMN_HOUR+" INTEGER, "
+				+TABLE_ABSENT_COLUMN_SUBJECT+" TEXT);";
 		
-		String impdatesSql = "CREATE TABLE "+TABLE_IMPORTANT_DATES+"(name TEXT, date TEXT, desc TEXT, ala;";
+		String tempttSql = "CREATE TABLE "+TABLE_TEMP_TIMETABLE+"("
+				+TABLE_TEMP_TIMETABLE_COLUMN_DATE+" TEXT, "
+				+TABLE_TEMP_TIMETABLE_COLUMN_HOUR+" INTEGER, "
+				+TABLE_TEMP_TIMETABLE_COLUMN_SUBJECT+" TEXT);";
 		
-		String papersSql = "CREATE TABLE "+TABLE_PAPERS+"(name TEXT, subject TEXT, weight INTEGER, " +
-				"date TEXT, status INTEGER, maxmarks INTEGER, score INTEGER INTEGER, reminder INTEGER);";
+		String impdatesSql = "CREATE TABLE "+TABLE_IMPORTANT_DATES+"(" +
+				TABLE_IMPORTANT_DATES_COLUMN_NAME+" TEXT, " +
+				TABLE_IMPORTANT_DATES_COLUMN_DATE+" TEXT, " +
+				TABLE_IMPORTANT_DATES_COLUMN_DESCRIPTION+" TEXT, " +
+				TABLE_IMPORTANT_DATES_COLUMN_ALARM+" INTEGER);";
+		
+		String papersSql = "CREATE TABLE "+TABLE_PAPERS+"(" +
+				TABLE_PAPERS_COLUMN_NAME+" TEXT, " +
+				TABLE_PAPERS_COLUMN_SUBJECT+" TEXT, " +
+				TABLE_PAPERS_COLUMN_WEIGHT+" INTEGER, " +
+				TABLE_PAPERS_COLUMN_DATE+" TEXT, " +
+				TABLE_PAPERS_COLUMN_STATUS+" INTEGER, " +
+				TABLE_PAPERS_COLUMN_MAX_MARKS+" INTEGER, " +
+				TABLE_PAPERS_COLUMN_SCORE+" INTEGER, " +
+				TABLE_PAPERS_COLUMN_REMINDER+" INTEGER);";
 		
 		db.execSQL(subjectsSql);
 		db.execSQL(timetableSql);
@@ -123,15 +167,72 @@ public class DBHelper extends SQLiteOpenHelper
 	}
 
 
-	// SUBJECTS table handling functions
+	/**
+	 * 		FUNCTIONS TO HANDLE SUBJECTS
+	 */
+	
+	
+	/**
+	 * 
+	 * @param subjectName The subject name for which details are to be retrieved
+	 * @return All details of the subject wrapped up in Subject object
+	 */
+	public Subject getSubjectWithName(String subjectName) {
+		
+		Subject subject = new Subject();
+		String sql = "SELECT * FROM "+TABLE_SUBJECT+" WHERE "+TABLE_SUBJECT_COLUMN_NAME+" = "+subjectName;
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor = db.rawQuery(sql, null);
+		if (cursor.moveToFirst()) {
+			
+			subject.setName(cursor.getString(cursor.getColumnIndex(TABLE_SUBJECT_COLUMN_NAME)));
+			subject.setExpected(cursor.getInt(cursor.getColumnIndex(TABLE_SUBJECT_COLUMN_EXPECTED)));
+			subject.setHeld(cursor.getInt(cursor.getColumnIndex(TABLE_SUBJECT_COLUMN_HELD)));
+			subject.setAttended(cursor.getInt(cursor.getColumnIndex(TABLE_SUBJECT_COLUMN_ATTENDED)));
+			subject.setSafeBunks(cursor.getInt(cursor.getColumnIndex(TABLE_SUBJECT_COLUMN_SAFE_BUNKS)));
+			subject.setLowAttendanceAlarm(cursor.getInt(cursor.getColumnIndex(TABLE_SUBJECT_COLUMN_ATTENDED))
+							== 0? false: true);
+		}
+		
+		return subject;		
+	}
+	
+	/**
+	 * 
+	 * @return A list of all subjects' details, sorted according to name
+	 */
+	public List<Subject> getAllSubjects() {
+		
+		ArrayList<Subject> subjects = new ArrayList<Subject>();
+		
+		String sql = "SELECT * FROM "+TABLE_SUBJECT+";";
+		Cursor cursor = this.getReadableDatabase().rawQuery(sql, null);
+		while(cursor.moveToNext()) {
+			Subject subject = new Subject();
+			
+			subject.setName(cursor.getString(cursor.getColumnIndex(TABLE_SUBJECT_COLUMN_NAME)));
+			subject.setExpected(cursor.getInt(cursor.getColumnIndex(TABLE_SUBJECT_COLUMN_EXPECTED)));
+			subject.setHeld(cursor.getInt(cursor.getColumnIndex(TABLE_SUBJECT_COLUMN_HELD)));
+			subject.setAttended(cursor.getInt(cursor.getColumnIndex(TABLE_SUBJECT_COLUMN_ATTENDED)));
+			subject.setSafeBunks(cursor.getInt(cursor.getColumnIndex(TABLE_SUBJECT_COLUMN_SAFE_BUNKS)));
+			subject.setLowAttendanceAlarm(cursor.getInt(cursor.getColumnIndex(TABLE_SUBJECT_COLUMN_ATTENDED))
+							== 0? false: true);
+			
+			subjects.add(subject);
+		}
+		
+		Collections.sort(subjects);
+		return subjects;
+	}
+	
 	public String[] getAllNames() 
 	{
 		int i = 0;
 		SQLiteDatabase db = this.getReadableDatabase();
-		long n = DatabaseUtils.queryNumEntries(db, "subjects");
+		long n = DatabaseUtils.queryNumEntries(db, TABLE_SUBJECT);
 		String[] names=new String[(int) n];
 		
-		Cursor c = db.rawQuery("SELECT name FROM subjects;", null);
+		Cursor c = db.rawQuery("SELECT "+TABLE_SUBJECT_COLUMN_NAME+" FROM "+TABLE_SUBJECT+";", null);
 		if (c.moveToFirst()) 
 		{
 			do
@@ -144,27 +245,12 @@ public class DBHelper extends SQLiteOpenHelper
 		Arrays.sort(names);
 		return names;
 	}
-	
-	public void changeColour(String subject, int colour)
-	{
-		SQLiteDatabase db = this.getWritableDatabase();
-		String sql = "UPDATE subjects SET colour = "+colour+" WHERE name = '"+subject+"';";
-		db.execSQL(sql);
-		db.close();
-	}
-	
-	public int getColour(String subject)
-	{
-		String sql = "SELECT colour FROM subjects WHERE name = '"+subject+"';";
-		SQLiteDatabase db = this.getReadableDatabase();
-		Cursor c=db.rawQuery(sql, null);
-		if(c.moveToFirst())
-		{
-			return c.getInt(0);
-		}
-		return 0;
-	}
 
+	public void addEmptySubject(Subject subject) {
+		String sql = "INSERT INTO "+TABLE_SUBJECT+" VALUES('"+subject.getName()+"', null, 0, 0, 0, 0, 0);";
+		exec(sql);
+	}
+	
 	public void addSubject(String subject) throws SQLException// adds a new
 																// subject to
 																// the DB
